@@ -21,12 +21,31 @@ mongoose.connect(dataSourceConnectionString, { useNewUrlParser: true , useUnifie
 
 const Schema = mongoose.Schema;
 
+// Validators ------
+
+
+// Validators End ------
+
 const TemplateSchema = new Schema({
     displayName : {
       type: String,
       required: true,
-      unique: true,
       trim: true
+    },
+    categoryId : {
+      type : ObjectId,
+      ref : 'Category',
+      validate: {
+        validator: async input => {
+          if (input) {
+            let exists = await Category.findById(input);
+            return exists;
+          } else {
+            return true;
+          }
+        },
+        message: 'Parent id does not exist'
+      }    
     }
 });
 
@@ -44,8 +63,8 @@ const CategorySchema = new Schema({
       validate: {
         validator: async input => {
           if (input.length > 0) {
+            // FIXME , deal with multiple ids in input.
             let exists = await Category.findById(input);
-            log.info(exists);
             return exists;
           } else {
             return true;
@@ -53,11 +72,6 @@ const CategorySchema = new Schema({
         },
         message: 'Parent id does not exist'
       }
-    },
-    templateIds: {
-      type : [ObjectId],
-      ref : 'Template'
-
     }
 });
 

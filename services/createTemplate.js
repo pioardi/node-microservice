@@ -4,21 +4,21 @@
  * @fileoverview Create a category.
  */
 'use strict';
-const {Category} = require('../models');
+const {Template} = require('../models');
 const log = require('../loggers');
 
 module.exports = async (req,res) => {
-    let category = req.body;
-    if(!category.displayName){
+    let template = req.body;
+    if(!template.displayName){
         res.status(400).send({err : 'Invalid input, please specify display name into your body request'});
     }else{
-        let categoryToAdd = new Category(req.body);
+        let templateToAdd = new Template(req.body);
         try{
-            let created  = await categoryToAdd.save();
+            let created  = await templateToAdd.save();
             res.status(201).send({id : created._id});                     
-        }catch(e){
-            log.error(`Error during category creation :  ${err}`);
-            res.status(500).send({err : 'Internal Server Error'});    
+        }catch(err){
+            log.error(`Error during template creation :  ${err}`);
+            res.status(500).send({err : err.errmsg || err.message || 'Internal server error'});  
         }
     }
 };

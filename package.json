@@ -4,7 +4,7 @@
   "description": "Template management system back end",
   "main": "app.js",
   "scripts": {
-    "test": "mocha **/*test.js",
+    "test": "mocha --timeout 10000 **/*test.js ",
     "demontest": "nodemon --exec \"npm test\"",
     "start": "node app.js",
     "build": "npm install"

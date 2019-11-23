@@ -22,11 +22,11 @@ app.use(express.json());
 // app.use(cors());
 // expose REST API
 app.post('/categories', createCategory);
-app.post('/categories/:categoryId/templates', createTemplate);
+app.post('/templates', createTemplate);
 app.delete('/categories/:categoryId', deleteCategory);
-app.delete('/categories/:categoryId/templates/:templateId', deleteTemplate);
+app.delete('/templates/:templateId', deleteTemplate);
 app.put('/categories/:categoryId', moveCategory);
-app.put('/categories/:categoryId/templates/:templateId', moveTemplate);
+app.put('/templates/:templateId', moveTemplate);
 app.listen(port);
 log.info(`Starting to serve HTTP requests on port ${port}`);
 module.exports = app;

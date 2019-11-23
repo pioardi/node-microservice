@@ -54,7 +54,7 @@ const CategorySchema = new Schema({
     displayName : {
       type: String,
       required: true,
-      unique: true,
+      index: {unique: true},
       trim: true
     },
     parentIds : {

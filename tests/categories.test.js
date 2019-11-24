@@ -13,7 +13,7 @@ let acapulco = 'acapulco';
 let munich = 'munich';
 let loscabos = 'los cabos';
 let lapaz = 'la paz';
-let memo = 'la paz';
+let memo = 'memo';
 
 
 // I will create the category Travel Destinations (createId)

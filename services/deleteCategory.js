@@ -7,15 +7,25 @@
 const { db, Template, Category } = require('../models');
 const log = require('../loggers');
 
+
+
 module.exports = async (req, res) => {
   //TODO you can use Promise.all here , to improve performance.
   let session;
+
   // check exists, do that before to start the session.
-  let category = await Category.findById(req.params.categoryId);
-  if(!category){
-    res.status(404).send({err : 'Cannot delete a category that does not exist'});
+  try{
+    let category = await Category.findById(req.params.categoryId);
+    if(!category){
+      res.status(404).send({err : 'Cannot delete a category that does not exist'});
+      return;
+    }
+  }catch(err){
+    log.error(`Error during category deletion :  ${err}`);
+    res.status(500).send({err : err.errmsg || err.message || 'Internal server error'});
     return;
   }
+  
   try {
     session = await db.startSession();
     log.info(`Starting transaction to delete the category ${req.params.categoryId}`);

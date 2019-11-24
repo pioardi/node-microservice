@@ -24,10 +24,9 @@ let germanyId;
 let beachId;
 let exclusiveId;
 
-  describe('/categories POST - should create a category with a display name', function(){
+  describe('API Integration test suite', function(){
 
     before((done) => {
-     
       Category.deleteMany({displayName : { $in : [expectedDisplayName,expectedDisplayNameForChildOne,expectedDisplayNameForChildTwo,expectedDisplayNameForChildThree,expectedDisplayNameForChildFour]}})
               .then(res => {
                 Template.deleteMany({displayName : { $in : [expectedTemplateNameOne,expectedTemplateNameTwo,expectedTemplateNameThree,expectedTemplateNameFour]}}).then(res => done()).catch(e => done(err));
@@ -35,7 +34,7 @@ let exclusiveId;
               .catch(err => done(err));
     }); 
 
-    it('should create a category if input is valid', (done) =>  {
+    it('should create the category Travel Destinarions if input is valid', (done) =>  {
       request(api).post('/categories')
                   .set('Accept', 'application/json')
                   .send({displayName : expectedDisplayName})
@@ -142,14 +141,6 @@ let exclusiveId;
                   });
     });
 
-  });
-
-  // Associate templates to a category
-
-
-
-  describe('/templates POST - should associate a template under a category', function(){
-
     it('should create the template acapulco and put it under the Mexico category', (done) =>  {
       request(api).post('/templates')
                   .set('Accept', 'application/json')
@@ -199,7 +190,7 @@ let exclusiveId;
     it('should insert the category beach under the category Germany', (done) =>  {
       request(api).post('/categories')
                   .set('Accept', 'application/json')
-                  .send({ displayName : expectedDisplayNameForChildThree , parentIds : [germanyId]})
+                  .send({ displayName : expectedDisplayNameForChildThree , parentIds : [germanyId , travelDestinationsId]})
                   .expect(201)
                   .end((err,res) => { 
                     if(err){
@@ -247,7 +238,7 @@ let exclusiveId;
     it('should insert the category Exclusive under the category beach', (done) =>  {
       request(api).post('/categories')
                   .set('Accept', 'application/json')
-                  .send({ displayName : expectedDisplayNameForChildFour , parentIds : [beachId]})
+                  .send({ displayName : expectedDisplayNameForChildFour , parentIds : [beachId,germanyId,travelDestinationsId]})
                   .expect(201)
                   .end((err,res) => { 
                     if(err){
@@ -291,4 +282,5 @@ let exclusiveId;
                     });               
                   });
     });
+
   });

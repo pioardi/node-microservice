@@ -4,7 +4,7 @@
   "description": "Template management system back end",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --timeout 10000  --exit **/*test.js ",
+    "test": "mocha --timeout 20000  --exit **/*test.js ",
     "demontest": "nodemon --exec \"npm test\"",
     "start": "node app.js",
     "build": "npm install"
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/xara-server-test/xara-test-alessandro#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongodb": "^3.3.4",
     "mongoose": "^5.7.12",
     "winston": "^3.2.1"
   },

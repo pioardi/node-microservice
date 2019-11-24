@@ -10,12 +10,12 @@ mongoose.set('useCreateIndex', true);
 // object destructuring
 const { dataSourceConnectionString } = require('../config');
 const ObjectId = mongoose.Schema.Types.ObjectId;
-mongoose.connect(dataSourceConnectionString, { useNewUrlParser: true , useUnifiedTopology: true})
-        .then(res => {
+mongoose.connect(dataSourceConnectionString, { useNewUrlParser: true , useUnifiedTopology: true , dbName: 'xaratest'})
+        .then(() => {
            log.info('Success connection with MONGO DB '); 
         })
         .catch(err => {
-           log.error(`Error during connection with mongo db`);
+           log.error(`Error during connection with mongo db : ${err}`);
         });
         
 
@@ -82,5 +82,6 @@ const Template = mongoose.model('Template', TemplateSchema);
 
 module.exports = {
   Category: Category,
-  Template: Template
+  Template: Template,
+  db : mongoose
 };

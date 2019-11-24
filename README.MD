@@ -28,6 +28,7 @@ Rationale :
         ParentIds is an array that contains all super categories, I did some existency checks (Will try to improve during the next hours).
         It is indexed because I use it on delete and move operation for categories.
     </li>
+    <li>Display name on template/category is not indexed , to do that we should understand the UI to serve, based on that we can decide for different types of indexes ( text indexes for example ) , into my API I always retrieve documents by id.</li>
 </ul>
 
 <h2>Rest API</h2>

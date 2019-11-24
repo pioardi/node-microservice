@@ -31,7 +31,7 @@ let lapazId;
     before((done) => {
       Category.deleteMany({displayName : { $in : [travelDestionation,mexico,germany,beach,exclusiveName]}})
               .then(() => {
-                Template.deleteMany({displayName : { $in : [acapulco,munich,loscabos,lapaz]}}).then(() => done()).catch(err => done(err));
+                Template.deleteMany({displayName : { $in : [acapulco,munich,loscabos,lapaz,memo]}}).then(() => done()).catch(err => done(err));
               })
               .catch(err => done(err));
     }); 

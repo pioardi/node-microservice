@@ -20,7 +20,7 @@ parentIds ( type array of ObjectID , ref to Category , index true)
 Rationale : 
 <ul>
     <li>
-        Avoid to use embedded document because we can have a lot of sub categories and templates associated to a category , to allow ACID I will use cross document transactions,even because I think that delete and move are not stressed as API , into a real life scenario I think that people will create/update/delete categories ,but the most frequent operation is to read/create a template.
+        Avoided to use embedded document because we can have a lot of sub categories and templates associated to a category, moreover a template should exists without a category , to allow ACID I will use cross document transactions,even because I think that delete and move are not stressed as API , into a real life scenario I think that people will create/update/delete categories with low frequency ,but the most frequent operation is to read/create a template.
     </li>
     <li>categoryId on Template is not mandatory because we can create a template without a category.
     </li>
@@ -58,7 +58,7 @@ Some points of this POC are configurable, you can find all details into the conf
 To start the application -> node app.js <br>
 To run tests ( if you want use my docker compose file to get some mongodb instance, follow this https://gist.github.com/harveyconnor/518e088bad23a273cae6ba7fc4643549 ) :
 <ul>
-    <li>export DATA_SOURCE_CONNECTION_STRING=YOUR_MONGO_DB</li>
+    <li>export DATA_SOURCE_CONNECTION_STRING=YOUR_MONGO_DB ( the default is a mongo deployed to db atlas , but I suggest you to use another instance )</li>
     <li>
         npm run test
     </li>

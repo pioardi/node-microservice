@@ -95,7 +95,7 @@ let lapazId;
     it('should insert the category Mexico under another one', (done) =>  {
       request(api).post('/categories')
                   .set('Accept', 'application/json')
-                  .send({ displayName : mexico , parentIds : [travelDestinationsId]})
+                  .send({ displayName : mexico , anchestorIds : [travelDestinationsId]})
                   .expect(201)
                   .end((err,res) => {
                     if(err){
@@ -106,10 +106,10 @@ let lapazId;
                     Category.findById(res.body.id).then(doc => {
                       expect(doc).toBeDefined();
                       expect(doc.id).toBe(res.body.id);
-                      expect(doc.parentIds).toBeDefined();
+                      expect(doc.anchestorIds).toBeDefined();
                       mexicoId = doc.id;
-                      let parentIdsCheck = doc.parentIds.find(item => item == travelDestinationsId);
-                      expect(parentIdsCheck).toBeDefined();
+                      let anchestorIdsCheck = doc.anchestorIds.find(item => item == travelDestinationsId);
+                      expect(anchestorIdsCheck).toBeDefined();
                       expect(doc.displayName).toBe(mexico);
                       done();
                     }).catch(error => {
@@ -121,7 +121,7 @@ let lapazId;
     it('should insert the category Germany under another one', (done) =>  {
       request(api).post('/categories')
                   .set('Accept', 'application/json')
-                  .send({ displayName : germany , parentIds : [travelDestinationsId]})
+                  .send({ displayName : germany , anchestorIds : [travelDestinationsId]})
                   .expect(201)
                   .end((err,res) => {
                     if(err){
@@ -133,9 +133,9 @@ let lapazId;
                     Category.findById(res.body.id).then(doc => {
                       expect(doc).toBeDefined();
                       expect(doc.id).toBe(res.body.id);
-                      expect(doc.parentIds).toBeDefined();
-                      let parentIdsCheck = doc.parentIds.find(item => item == travelDestinationsId);
-                      expect(parentIdsCheck).toBeDefined();
+                      expect(doc.anchestorIds).toBeDefined();
+                      let anchestorIdsCheck = doc.anchestorIds.find(item => item == travelDestinationsId);
+                      expect(anchestorIdsCheck).toBeDefined();
                       expect(doc.displayName).toBe(germany);
                       done();
                     }).catch(error => {
@@ -193,7 +193,7 @@ let lapazId;
     it('should insert the category beach under the category Germany', (done) =>  {
       request(api).post('/categories')
                   .set('Accept', 'application/json')
-                  .send({ displayName : beach , parentIds : [germanyId , travelDestinationsId]})
+                  .send({ displayName : beach , anchestorIds : [germanyId , travelDestinationsId]})
                   .expect(201)
                   .end((err,res) => { 
                     if(err){
@@ -205,9 +205,9 @@ let lapazId;
                     Category.findById(res.body.id).then(doc => {
                       expect(doc).toBeDefined();
                       expect(doc.id).toBe(res.body.id);
-                      expect(doc.parentIds).toBeDefined();
-                      let parentIdsCheck = doc.parentIds.find(item => item == germanyId);
-                      expect(parentIdsCheck).toBeDefined();
+                      expect(doc.anchestorIds).toBeDefined();
+                      let anchestorIdsCheck = doc.anchestorIds.find(item => item == germanyId);
+                      expect(anchestorIdsCheck).toBeDefined();
                       expect(doc.displayName).toBe(beach);
                       done();
                     }).catch(error => {
@@ -242,7 +242,7 @@ let lapazId;
     it('should insert the category Exclusive under the category beach', (done) =>  {
       request(api).post('/categories')
                   .set('Accept', 'application/json')
-                  .send({ displayName : exclusiveName , parentIds : [beachId,germanyId,travelDestinationsId]})
+                  .send({ displayName : exclusiveName , anchestorIds : [beachId,germanyId,travelDestinationsId]})
                   .expect(201)
                   .end((err,res) => { 
                     if(err){
@@ -254,9 +254,9 @@ let lapazId;
                     Category.findById(res.body.id).then(doc => {
                       expect(doc).toBeDefined();
                       expect(doc.id).toBe(res.body.id);
-                      expect(doc.parentIds).toBeDefined();
-                      let parentIdsCheck = doc.parentIds.find(item => item == beachId);
-                      expect(parentIdsCheck).toBeDefined();
+                      expect(doc.anchestorIds).toBeDefined();
+                      let anchestorIdsCheck = doc.anchestorIds.find(item => item == beachId);
+                      expect(anchestorIdsCheck).toBeDefined();
                       expect(doc.displayName).toBe(exclusiveName);
                       done();
                     }).catch(error => {
@@ -302,21 +302,21 @@ let lapazId;
                     Category.findById(beachId).then(doc => {
                       expect(doc).toBeDefined();
                       expect(doc.id).toBe(res.body._id);
-                      expect(doc.parentIds).toBeDefined();
-                      let parentIdsCheckOne = doc.parentIds.find(item => item == mexicoId);
-                      expect(parentIdsCheckOne).toBeDefined();
-                      let parentIdsCheckTwo = doc.parentIds.find(item => item == travelDestinationsId);
-                      expect(parentIdsCheckTwo).toBeDefined();
+                      expect(doc.anchestorIds).toBeDefined();
+                      let anchestorIdsCheckOne = doc.anchestorIds.find(item => item == mexicoId);
+                      expect(anchestorIdsCheckOne).toBeDefined();
+                      let anchestorIdsCheckTwo = doc.anchestorIds.find(item => item == travelDestinationsId);
+                      expect(anchestorIdsCheckTwo).toBeDefined();
                       expect(doc.displayName).toBe(beach);
                       Category.findById(exclusiveId).then(exclusive => {
                         expect(exclusive).toBeDefined();
-                        expect(exclusive.parentIds).toBeDefined();
-                        let parentIdsCheckOne = exclusive.parentIds.find(item => item == mexicoId);
-                        expect(parentIdsCheckOne).toBeDefined();
-                        let parentIdsCheckTwo = exclusive.parentIds.find(item => item == travelDestinationsId);
-                        expect(parentIdsCheckTwo).toBeDefined();
-                        let parentIdsCheckThree = exclusive.parentIds.find(item => item == beachId);
-                        expect(parentIdsCheckThree).toBeDefined();
+                        expect(exclusive.anchestorIds).toBeDefined();
+                        let anchestorIdsCheckOne = exclusive.anchestorIds.find(item => item == mexicoId);
+                        expect(anchestorIdsCheckOne).toBeDefined();
+                        let anchestorIdsCheckTwo = exclusive.anchestorIds.find(item => item == travelDestinationsId);
+                        expect(anchestorIdsCheckTwo).toBeDefined();
+                        let anchestorIdsCheckThree = exclusive.anchestorIds.find(item => item == beachId);
+                        expect(anchestorIdsCheckThree).toBeDefined();
                         expect(exclusive.displayName).toBe(exclusiveName);
                         done();
                       }).catch(error => {

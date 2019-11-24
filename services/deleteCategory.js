@@ -14,8 +14,8 @@ module.exports = async (req, res) => {
     log.info(`Starting transaction to delete the category ${req.params.categoryId}`);
     session.startTransaction();
     await Category.deleteOne({_id : req.params.categoryId }, { session: session });
-    let subCategories = await Category.find({ parentIds : req.params.categoryId} , null , {session: session});
-    let deleteResult = await Category.deleteMany({ parentIds : req.params.categoryId} , {session: session});
+    let subCategories = await Category.find({ anchestorIds : req.params.categoryId} , null , {session: session});
+    let deleteResult = await Category.deleteMany({ anchestorIds : req.params.categoryId} , {session: session});
     log.info(`Number of sub categories deleted --> ${deleteResult.deletedCount}`); // Number of documents removed
     // build ids
     let ids = subCategories.map(doc => doc.id);

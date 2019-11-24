@@ -57,7 +57,7 @@ const CategorySchema = new Schema({
       //index: {unique: true},
       trim: true
     },
-    parentIds : {
+    anchestorIds : {
       type : [ObjectId],
       ref : 'Category',
       validate: {

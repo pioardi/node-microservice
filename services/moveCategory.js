@@ -19,12 +19,12 @@ module.exports = async (req,res) => {
     session.startTransaction();
     let targetCategory = await Category.findById(body.targetCategoryId);
     // you have to update the category with this ids
-    let ids = targetCategory.parentIds;
+    let ids = targetCategory.anchestorIds;
     ids.push(targetCategory._id);
-    let updatedCategory = await Category.findOneAndUpdate({_id : req.params.categoryId} , {parentIds : ids}, {useFindAndModify : false, new: true , session:session});
+    let updatedCategory = await Category.findOneAndUpdate({_id : req.params.categoryId} , {anchestorIds : ids}, {useFindAndModify : false, new: true , session:session});
     // childs will need another id.
     ids.push(updatedCategory._id);
-    await Category.updateMany({parentIds : { $in: req.params.categoryId }} , { parentIds : ids} , {session: session});
+    await Category.updateMany({anchestorIds : { $in: req.params.categoryId }} , { anchestorIds : ids} , {session: session});
     await session.commitTransaction();
     res.status(200).send(updatedCategory);
   }catch(err){

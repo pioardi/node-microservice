@@ -344,7 +344,6 @@ let lapazId;
                       Template.findById(lapazId),
                       Template.findById(losCabosId)
                     ]).then(results => {
-                       console.log(results);
                        let beach = results[0];
                        let exclusive = results[1];
                        let lapaz = results[2];

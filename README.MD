@@ -12,7 +12,7 @@ _id ( default mongo db id)<br>
 displayName ( type string , mandatory)<br>
 categoryId ( type objectID , ref to category collection)<br>
 
-<strong>Category</strong>
+<strong>Category</strong><br>
 _id ( default mongo db id )
 displayName ( type string , required)
 parentIds ( type array of ObjectID , ref to Category , index true)

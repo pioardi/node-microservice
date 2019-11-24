@@ -68,5 +68,8 @@ To run tests ( if you want use my docker compose file to get some mongodb instan
     </li>
 </ul>
 
+<h2>Versions</h2>
+Node 12
+
 <h2>Thanks</h2>
 Thanks to Xara and to Roberto/Jimmy for this test,I had no doubt that it would be interesting and challenging.

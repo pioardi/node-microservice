@@ -50,7 +50,6 @@ If we want that a category must have one parent category only ( no checks implem
     <li>Validate parentIds in input and check that are related between them</li>
     <li>Take in input a parent id( not all the anchestors ) only from the Rest Api , read that parent id ,get the anchestors, put the anchestors and the parent into the new category. This should also improve API experience</li>
 </ul>
-If we want that one category can be associated to just another one , I should check that the anchestorIds in input are related between them ( this is not implemented into the POC).
 
 <h2>Optimization</h2>
 I have some TODO comments on optimization , in particular we could use Promise.all to improve performance of moveCategory and deleteCategory , both of them use transactions and do more than one write operation. We could do that if target NFR is not meet with sequential implementation.

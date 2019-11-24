@@ -54,7 +54,7 @@ const CategorySchema = new Schema({
     displayName : {
       type: String,
       required: true,
-      index: {unique: true},
+      //index: {unique: true},
       trim: true
     },
     parentIds : {
@@ -71,7 +71,8 @@ const CategorySchema = new Schema({
           }
         },
         message: 'Parent id does not exist'
-      }
+      },
+      index : true
     }
 });
 
@@ -79,7 +80,10 @@ const CategorySchema = new Schema({
 const Category = mongoose.model('Category', CategorySchema);
 const Template = mongoose.model('Template', TemplateSchema);
 
-
+process.on('exit', function (){
+  log.info('Closing mongo db connection');
+  mongoose.disconnect();
+});
 module.exports = {
   Category: Category,
   Template: Template,

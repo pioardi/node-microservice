@@ -24,7 +24,7 @@ module.exports = async (req,res) => {
     let updatedCategory = await Category.findOneAndUpdate({_id : req.params.categoryId} , {parentIds : ids}, {useFindAndModify : false, new: true , session:session});
     // childs will need another id.
     ids.push(updatedCategory._id);
-    let updatedCategories = await Category.updateMany({parentIds : { $in: req.params.categoryId }} , { parentIds : ids} , {session: session});
+    await Category.updateMany({parentIds : { $in: req.params.categoryId }} , { parentIds : ids} , {session: session});
     await session.commitTransaction();
     res.status(200).send(updatedCategory);
   }catch(err){

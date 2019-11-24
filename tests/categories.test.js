@@ -344,10 +344,11 @@ let lapazId;
                       Template.findById(lapazId),
                       Template.findById(losCabosId)
                     ]).then(results => {
+                       console.log(results);
                        let beach = results[0];
                        let exclusive = results[1];
-                       let lapaz = res[2];
-                       let losCabos = res[3];
+                       let lapaz = results[2];
+                       let losCabos = results[3];
                        expect(beach).toBeFalsy();
                        expect(exclusive).toBeFalsy();
                        expect(losCabos).toBeFalsy();

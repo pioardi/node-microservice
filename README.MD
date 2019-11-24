@@ -13,9 +13,9 @@ displayName ( type string , mandatory)<br>
 categoryId ( type objectID , ref to category collection)<br>
 
 <strong>Category</strong><br>
-_id ( default mongo db id )
-displayName ( type string , required)
-anchestorIds ( type array of ObjectID , ref to Category , index true)
+_id ( default mongo db id )<br>
+displayName ( type string , required)<br>
+anchestorIds ( type array of ObjectID , ref to Category , index true)<br>
 
 Rationale : 
 <ul>

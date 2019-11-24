@@ -42,9 +42,13 @@ I added two more cases to the test suite for some validations , other scenarios/
 The badge that you will find on top of this README is a continous integration example, it will start when someone commits.
 
 <h2>Validation & Error Handling</h2>
-TODO
+Express already has a default error handler for sync operations, since that I am using await I am doing try/catch to return custom messages when input is not valid or a runtime exception occurs.<br>
+You will find validation for refId existence to other documents and mandatory fields.<br>
+If we want that one category can be associated to just another one , I should check that the parentIds in input are related between them ( this is not implemented into the POC).
 
 <h2>Optimization</h2>
+I have some TODO comments on optimization , in particular we could use Promise.all to improve performance of moveCategory and deleteCategory , both of them use transactions and do more than one write operation. We could do that if target NFR is not meet with sequential implementation.
+I used Promise.all during parentIds validations , validating in parallel all ids present into the request body, also used a Promise.all into the test suite.
 
 <h2>Configuration</h2>
 Some points of this POC are configurable, you can find all details into the config folder ( index.js file) , in particular you can choose your mongo db connection string ( db will be xara-test).
@@ -59,3 +63,5 @@ To run tests ( if you want use my docker compose file to get some mongodb instan
     </li>
 </ul>
 
+<h2>Thanks</h2>
+Thanks to Xara and to Roberto/Jimmy for this test,I had no doubt that it would be interesting and challenging.

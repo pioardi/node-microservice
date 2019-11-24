@@ -12,7 +12,7 @@ module.exports = async (req,res) => {
         if(!body.targetCategoryId){
             res.status(400).send({err : 'Please specify a category id where you want to move the template'});
         }
-        let updatedTemplate = await Template.findOneAndUpdate({_id : req.params.templateId} , {categoryId : body.targetCategoryId}, {new: true});
+        let updatedTemplate = await Template.findOneAndUpdate({_id : req.params.templateId} , {categoryId : body.targetCategoryId}, {new: true, useFindAndModify: false});
         res.status(200).send({updatedTemplate});
     }catch(err){
         log.error(`Error moving a template :  ${err}`);

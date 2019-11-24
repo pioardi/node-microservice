@@ -29,8 +29,8 @@ module.exports = async (req,res) => {
     res.status(200).send(updatedCategory);
   }catch(err){
       log.error('Error, aborting transaction');
-      await session.abortTransaction();
       log.error(`Error during move category operation:  ${err}`);
+      await session.abortTransaction();
       res.status(500).send({err : err.errmsg || err.message || 'Internal server error'});
   }
 };

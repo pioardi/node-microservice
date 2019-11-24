@@ -64,8 +64,16 @@ const CategorySchema = new Schema({
         validator: async input => {
           if (input.length > 0) {
             // FIXME , deal with multiple ids in input.
-            let exists = await Category.findById(input);
-            return exists;
+            //
+            let promises = [];
+            promises = input.map(id => {
+                              return new Promise((resolve,reject) => {
+                                log.info(`executing validation check for id ${id}`);
+                                Category.findById(id).then(res => resolve(res)).catch(err => reject(err));
+                            });
+                          });
+            let results = await Promise.all(promises);
+            return results.every(res => res);
           } else {
             return true;
           }

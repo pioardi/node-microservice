@@ -36,6 +36,7 @@ In general I would like to provide a yaml file,swagger compliant that describe a
 
 <h2>Test suite</h2>
 The test numer 10 is not permitted by designed, so it is not implemented.<br>
+I added two more cases to the test suite for some validations , other scenarios/api/validation are not tested into a script , but I tested them with a Rest client.
 
 <h2>CI</h2>
 The badge that you will find on top of this README is a continous integration example, it will start when someone commits.

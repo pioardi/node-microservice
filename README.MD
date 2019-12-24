@@ -1,10 +1,5 @@
 # Proof of concept documentation
 
-[![Actions Status](https://github.com/xara-server-test/xara-test-alessandro/workflows/Node%20CI/badge.svg)](https://github.com/xara-server-test/xara-test-alessandro/actions)
-
-
-<h1>General discussion</h1>
-I am writing this doc to explain some decisions and to document the proof of concept as better as possible. <br>
 
 <h2>Data Model</h2>
 <strong>Template</strong><br>
@@ -56,7 +51,7 @@ I have some TODO comments on optimization , in particular we could use Promise.a
 I used Promise.all during anchestorIds validations , validating in parallel all ids present into the request body, also used a Promise.all into the test suite.
 
 <h2>Configuration</h2>
-Some points of this POC are configurable, you can find all details into the config folder ( index.js file) , in particular you can choose your mongo db connection string ( db will be xara-test).
+Some points of this POC are configurable, you can find all details into the config folder ( index.js file) , in particular you can choose your mongo db connection string ( db will be test).
 
 <h2>How to run</h2>
 To start the application -> node app.js <br>
@@ -70,6 +65,3 @@ To run tests ( if you want use my docker compose file to get some mongodb instan
 
 <h2>Versions</h2>
 Node 12
-
-<h2>Thanks</h2>
-Thanks to Xara and to Roberto/Jimmy for this test,I had no doubt that it would be interesting and challenging.

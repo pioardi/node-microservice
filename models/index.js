@@ -10,7 +10,7 @@ mongoose.set('useCreateIndex', true);
 // object destructuring
 const { dataSourceConnectionString } = require('../config');
 const ObjectId = mongoose.Schema.Types.ObjectId;
-mongoose.connect(dataSourceConnectionString, { useNewUrlParser: true , useUnifiedTopology: true , dbName: 'xaratest'})
+mongoose.connect(dataSourceConnectionString, { useNewUrlParser: true , useUnifiedTopology: true , dbName: 'test'})
         .then(() => {
            log.info('Success connection with MONGO DB '); 
         })

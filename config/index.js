@@ -12,6 +12,5 @@ module.exports = {
     //this kind of info is important to determinate if log should be on console or not and for other stuff
     nodeEnv : process.env.NODE_ENV || 'dev',
     // data source connection string
-    //dataSourceConnectionString : process.env.DATA_SOURCE_CONNECTION_STRING || 'mongodb://test:test@ds139781.mlab.com:39781/pioardi'
-    dataSourceConnectionString : process.env.DATA_SOURCE_CONNECTION_STRING || 'mongodb+srv://test:test@xaratest-3lcgk.azure.mongodb.net/test?retryWrites=true&w=majority'
+    dataSourceConnectionString : process.env.DATA_SOURCE_CONNECTION_STRING || 'mongodb+srv://supertest:supertest@xaratest-3lcgk.azure.mongodb.net/test?retryWrites=true&w=majority'
 };

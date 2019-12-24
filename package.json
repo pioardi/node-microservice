@@ -13,16 +13,8 @@
     "node": ">=10.0.0",
     "npm": ">=6.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xara-server-test/xara-test-alessandro.git"
-  },
   "author": "pioardi",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/xara-server-test/xara-test-alessandro/issues"
-  },
-  "homepage": "https://github.com/xara-server-test/xara-test-alessandro#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.3.4",

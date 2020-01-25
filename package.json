@@ -19,7 +19,8 @@
     "express": "^4.17.1",
     "mongodb": "^3.3.4",
     "mongoose": "^5.7.12",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "poolifier" : "1.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.8",

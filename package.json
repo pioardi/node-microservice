@@ -16,7 +16,7 @@
   "author": "pioardi",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongodb": "^3.3.4",
     "mongoose": "^5.7.12",
     "winston": "^3.2.1",
